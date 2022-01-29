@@ -14,5 +14,5 @@ jobs:
     - name: run test on docker-compose
       run: |
         docker-compose -f ./rails_mysql/.devcontainer/docker-compose.yml up -d
-        docker-compose -f ./rails_mysql/.devcontainer/docker-compose.yml exec web make -C /workspace make env-ci
+        docker-compose -f ./rails_mysql/.devcontainer/docker-compose.yml exec -T web make -C /workspace make env-ci
       working-directory: ./
