@@ -1,0 +1,18 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest    
+    steps:
+    - uses: actions/checkout@v2
+    - name: run test on docker-compose
+      run: |
+        docker-compose -f ./rails_mysql/.devcontainer/docker-compose.yml up -d
+        docker-compose -f ./rails_mysql/.devcontainer/docker-compose.yml exec web make -C /workspace make env-ci
+      working-directory: ./
