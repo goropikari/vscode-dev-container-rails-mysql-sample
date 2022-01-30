@@ -8,11 +8,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: run test on docker-compose
       run: |
-        docker-compose -f ./rails_mysql/.devcontainer/docker-compose.yml up -d
-        docker-compose -f ./rails_mysql/.devcontainer/docker-compose.yml exec -T web make -C /workspace env-ci
+        docker-compose -f ./.devcontainer/docker-compose.yml up -d
+        docker-compose -f ./.devcontainer/docker-compose.yml exec -T web make -C /workspace env-ci
       working-directory: ./
